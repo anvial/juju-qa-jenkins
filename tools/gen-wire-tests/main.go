@@ -91,7 +91,8 @@ var branches = []branchVersion{
 	{Branch: "2.9", Version: "2.9"},
 	{Branch: "3.6", Version: "3.6"},
 	{Branch: "4.0", Version: "4.0"},
-	{Branch: "main", Version: "4.1"},
+	{Branch: "4.1", Version: "4.1"},
+	{Branch: "main", Version: "4.2"},
 }
 
 // main dispatches to the collect or generate subcommand.

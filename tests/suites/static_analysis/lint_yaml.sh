@@ -43,6 +43,7 @@ files:
     - tools/gen-wire-tests/2.9.yaml
     - tools/gen-wire-tests/3.6.yaml
     - tools/gen-wire-tests/4.0.yaml
+    - tools/gen-wire-tests/4.1.yaml
     - tools/gen-wire-tests/main.yaml
 jobs:
   ignore:
@@ -104,6 +105,7 @@ files:
     - tools/gen-wire-tests/2.9.yaml
     - tools/gen-wire-tests/3.6.yaml
     - tools/gen-wire-tests/4.0.yaml
+    - tools/gen-wire-tests/4.1.yaml
     - tools/gen-wire-tests/main.yaml
 jobs:
   ignore:
@@ -150,6 +152,7 @@ files:
     - tools/gen-wire-tests/2.9.yaml
     - tools/gen-wire-tests/3.6.yaml
     - tools/gen-wire-tests/4.0.yaml
+    - tools/gen-wire-tests/4.1.yaml
     - tools/gen-wire-tests/main.yaml
 jobs:
   ignore: []
