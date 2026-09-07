@@ -80,7 +80,7 @@
           TEST_TIMEOUT: "${{TEST_TIMEOUT}}"
           USE_TMPFS_FOR_MGO: "${{USE_TMPFS_FOR_MGO}}"
           FUZZ_CHECK: 1
-          USE_LLD: 0
+          CGO_LDFLAGS: ""
     publishers:
       - junit:
           results: tests.xml
@@ -121,7 +121,7 @@
           TEST_TIMEOUT: "${{TEST_TIMEOUT}}"
           USE_TMPFS_FOR_MGO: "${{USE_TMPFS_FOR_MGO}}"
           FUZZ_CHECK: 0
-          USE_LLD: 0
+          CGO_LDFLAGS: ""
     publishers:
       - junit:
           results: tests.xml
@@ -162,7 +162,7 @@
           TEST_TIMEOUT: "${{TEST_TIMEOUT}}"
           USE_TMPFS_FOR_MGO: "${{USE_TMPFS_FOR_MGO}}"
           FUZZ_CHECK: 0
-          USE_LLD: 0
+          CGO_LDFLAGS: ""
     publishers:
       - junit:
           results: tests.xml
@@ -207,7 +207,7 @@
           TEST_TIMEOUT: "${{TEST_TIMEOUT}}"
           USE_TMPFS_FOR_MGO: "${{USE_TMPFS_FOR_MGO}}"
           FUZZ_CHECK: 0
-          USE_LLD: 0
+          CGO_LDFLAGS: ""
     publishers:
       - junit:
           results: tests.xml
@@ -248,7 +248,7 @@
           TEST_TIMEOUT: "${{TEST_TIMEOUT}}"
           USE_TMPFS_FOR_MGO: "${{USE_TMPFS_FOR_MGO}}"
           FUZZ_CHECK: 0
-          USE_LLD: 0
+          CGO_LDFLAGS: ""
     publishers:
       - junit:
           results: tests.xml
@@ -289,7 +289,7 @@
           TEST_TIMEOUT: "${{TEST_TIMEOUT}}"
           USE_TMPFS_FOR_MGO: "${{USE_TMPFS_FOR_MGO}}"
           FUZZ_CHECK: 0
-          USE_LLD: 1
+          CGO_LDFLAGS: "-fuse-ld=lld"
     publishers:
       - junit:
           results: tests.xml

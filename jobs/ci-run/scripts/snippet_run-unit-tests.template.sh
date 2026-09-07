@@ -23,20 +23,13 @@ if [[ "${{TEST_TYPE}}" == "cover" && "${{COVERAGE_ENABLED:-false}}" != "true" ]]
   TEST_TYPE="xunit-report"
 fi
 
-# The ARM64 static race binary can exceed the range of AArch64 CALL26
-# relocations. lld emits the required range-extension thunks while retaining
-# the static link configured by Juju's race-test target.
-if [[ "{USE_LLD}" == "1" ]]; then
-    export CGO_LDFLAGS="${{CGO_LDFLAGS:-}} -fuse-ld=lld"
-fi
-
 if [[ "${{TEST_TYPE}}" == "race" ]]; then
     if [ "$(make -q race-test > /dev/null 2>&1 || echo $?)" -eq 2 ]; then
         # if we don't have a race-test target, use go test.
         go test -v -race -test.timeout=${{TEST_TIMEOUT}} ./... | tee ${{WORKSPACE}}/go-unittest.out
         exit_code=$?
     else
-        JUJU_GOMOD_MODE=vendor make race-test VERBOSE_CHECK=1 TEST_TIMEOUT=${{TEST_TIMEOUT}} | tee ${{WORKSPACE}}/go-unittest.out
+        JUJU_GOMOD_MODE=vendor make race-test CGO_LDFLAGS="{CGO_LDFLAGS}" VERBOSE_CHECK=1 TEST_TIMEOUT=${{TEST_TIMEOUT}} | tee ${{WORKSPACE}}/go-unittest.out
         exit_code=$?
     fi
 elif [[ "${{TEST_TYPE}}" == "xunit-report" ]]; then
