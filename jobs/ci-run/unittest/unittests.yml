@@ -80,6 +80,7 @@
           TEST_TIMEOUT: "${{TEST_TIMEOUT}}"
           USE_TMPFS_FOR_MGO: "${{USE_TMPFS_FOR_MGO}}"
           FUZZ_CHECK: 1
+          CGO_LDFLAGS: ""
     publishers:
       - junit:
           results: tests.xml
@@ -120,6 +121,7 @@
           TEST_TIMEOUT: "${{TEST_TIMEOUT}}"
           USE_TMPFS_FOR_MGO: "${{USE_TMPFS_FOR_MGO}}"
           FUZZ_CHECK: 0
+          CGO_LDFLAGS: ""
     publishers:
       - junit:
           results: tests.xml
@@ -160,6 +162,7 @@
           TEST_TIMEOUT: "${{TEST_TIMEOUT}}"
           USE_TMPFS_FOR_MGO: "${{USE_TMPFS_FOR_MGO}}"
           FUZZ_CHECK: 0
+          CGO_LDFLAGS: ""
     publishers:
       - junit:
           results: tests.xml
@@ -204,6 +207,7 @@
           TEST_TIMEOUT: "${{TEST_TIMEOUT}}"
           USE_TMPFS_FOR_MGO: "${{USE_TMPFS_FOR_MGO}}"
           FUZZ_CHECK: 0
+          CGO_LDFLAGS: ""
     publishers:
       - junit:
           results: tests.xml
@@ -244,6 +248,7 @@
           TEST_TIMEOUT: "${{TEST_TIMEOUT}}"
           USE_TMPFS_FOR_MGO: "${{USE_TMPFS_FOR_MGO}}"
           FUZZ_CHECK: 0
+          CGO_LDFLAGS: ""
     publishers:
       - junit:
           results: tests.xml
@@ -271,7 +276,7 @@
       - common
       - install-common-tools
       - apt-install:
-          packages: gcc squashfuse
+          packages: gcc lld squashfuse
       - get-s3-source-payload
       - setup-go-environment
       - go-install:
@@ -284,6 +289,7 @@
           TEST_TIMEOUT: "${{TEST_TIMEOUT}}"
           USE_TMPFS_FOR_MGO: "${{USE_TMPFS_FOR_MGO}}"
           FUZZ_CHECK: 0
+          CGO_LDFLAGS: "-fuse-ld=lld"
     publishers:
       - junit:
           results: tests.xml
