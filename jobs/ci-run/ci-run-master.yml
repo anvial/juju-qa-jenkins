@@ -210,7 +210,7 @@
           name: "Testing"
           condition: SUCCESSFUL
           projects:
-            - name: gating-tests
+            - name: gating-integration-tests-amd64
               current-parameters: true
               predefined-parameters: |-
                 SHORT_GIT_COMMIT=${{SHORT_GIT_COMMIT}}

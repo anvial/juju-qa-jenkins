@@ -219,39 +219,6 @@
               predefined-parameters: |-
                 BUILD_ARCH=amd64
 
-- job:
-    name: "gating-integration-tests-arm64"
-    project-type: "multijob"
-    description: |-
-      intergration-arm64 runs the new shell integration tests with arm64 workloads.
-    node: noop-parent-jobs
-    concurrent: true
-    wrappers:
-      - default-integration-test-wrapper
-    parameters:
-      - string:
-          default: ""
-          description: "Enable sub job to be run individually."
-          name: SHORT_GIT_COMMIT
-    builders:
-      - get-s3-build-details
-      - set-test-description
-      - multijob:
-          name: "gating-integration-tests-arm64"
-          projects:
-            - name: "test-deploy-test-deploy-bundles-aws"
-              current-parameters: true
-              predefined-parameters: |-
-                BUILD_ARCH=amd64
-                BOOTSTRAP_ARCH=arm64
-                MODEL_ARCH=arm64
-            - name: "test-deploy-test-deploy-charms-aws"
-              current-parameters: true
-              predefined-parameters: |-
-                BUILD_ARCH=amd64
-                BOOTSTRAP_ARCH=arm64
-                MODEL_ARCH=arm64
-
 # Trial for timeout, 2h is too short, the tests do not start to run until
 # 1h40 or so.  Try 5h as a long pole, and adjust back.
 - wrapper:
