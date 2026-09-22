@@ -277,6 +277,12 @@
       - install-common-tools
       - apt-install:
           packages: gcc lld squashfuse
+      - shell: |-
+          #!/bin/bash
+          set -eux
+
+          command -v ld.lld
+          ld.lld --version
       - get-s3-source-payload
       - setup-go-environment
       - go-install:
@@ -289,7 +295,7 @@
           TEST_TIMEOUT: "${{TEST_TIMEOUT}}"
           USE_TMPFS_FOR_MGO: "${{USE_TMPFS_FOR_MGO}}"
           FUZZ_CHECK: 0
-          CGO_LDFLAGS: "-fuse-ld=lld"
+          CGO_LDFLAGS: "-fuse-ld=lld -B/usr/bin"
     publishers:
       - junit:
           results: tests.xml
